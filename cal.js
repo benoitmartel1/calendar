@@ -18,7 +18,7 @@ const months = [
 
 ical.fromURL(
   "https://calendar.google.com/calendar/ical/martel.b%40gmail.com/private-327e283d3a084fbaa7ee16a3f5e30468/basic.ics",
-  {},
+  { mode: "no-cors" },
   function(err, data) {
     console.log(Object.keys(data).length);
     for (let k in data) {
