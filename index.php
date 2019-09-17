@@ -1,3 +1,7 @@
+<?php
+file_get_contents('https://calendar.google.com/calendar/ical/martel.b%40gmail.com/public/basic.ics')
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -21,6 +25,6 @@
       </p>
     <![endif]-->
 
-    <script src="cal.js"></script>
+    <script src="calisse.js"></script>
   </body>
 </html>
