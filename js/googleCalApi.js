@@ -12,14 +12,13 @@ var DISCOVERY_DOCS = [
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
-var authorizeButton;
-var signoutButton;
+var authorizeButton = document.getElementById("authorize_button");
+var signoutButton = document.getElementById("signout_button");
+
 /**
  *  On load, called to load the auth2 library and API client library.
  */
 function mainScriptLoad() {
-  authorizeButton = $("#authorize_button");
-  signoutButton = $("#signout_button");
   console.log("loading");
   gapi.load("client:auth2", initClient);
 }
