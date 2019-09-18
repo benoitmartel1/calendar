@@ -100,7 +100,6 @@ function appendPre(message) {
 function listUpcomingEvents() {
   let endDate = new Date();
   endDate.setDate(endDate.getDate() + 14);
-  console.log(endDate.getDate());
   gapi.client.calendar.events
     .list({
       calendarId: "primary",
@@ -112,19 +111,10 @@ function listUpcomingEvents() {
     })
     .then(function(response) {
       var events = response.result.items;
-      appendPre("Upcoming events:");
-
       if (events.length > 0) {
         for (i = 0; i < events.length; i++) {
-          var event = events[i];
-          var when = event.start.dateTime;
-          if (!when) {
-            when = event.start.date;
-          }
-          appendPre(event.summary + " (" + when + ")");
+          appendToDay(events[i]);
         }
-      } else {
-        appendPre("No upcoming events found.");
       }
     });
 }

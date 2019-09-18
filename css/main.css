@@ -1,5 +1,25 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 200px 200px;
+  grid-template-rows: 50px 200px 200px;
+}
+.nb {
+  font-size: 300%;
+}
+.summary {
+  font-family: "Open Sans", sans-serif;
+}
+.month {
+  font-weight: bold;
+}
+.dayName {
+  font-size: 130%;
 }
