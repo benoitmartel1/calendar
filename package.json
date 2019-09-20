@@ -1,7 +1,29 @@
 {
   "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^43.0.0",
     "ical": "^0.6.0",
+    "ical-generator": "^1.8.1",
     "jquery": "^3.4.1",
     "les": "^1.0.1"
-  }
+  },
+  "name": "calendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benoitmartel1/calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benoitmartel1/calendar/issues"
+  },
+  "homepage": "https://github.com/benoitmartel1/calendar#readme",
+  "description": ""
 }

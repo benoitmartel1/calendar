@@ -11,6 +11,10 @@ body {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 50px 200px 200px;
 }
+.weekend {
+  color: yellow;
+}
+
 .nb {
   font-size: 300%;
 }

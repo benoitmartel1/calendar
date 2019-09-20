@@ -3,7 +3,6 @@
   <head>
     <title>Google Calendar API Quickstart</title>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="10" />
   </head>
   <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -18,35 +17,8 @@
   <link rel="stylesheet" type="text/css" href="css/main.css" />
 
   <body>
+    <div id="time"></div>
     <div class="month"></div>
     <div class="container calendar"></div>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
-
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-    <script type="text/javascript" src="js/googleCalApi.js"></script>
-    <script type="text/javascript">
-      var clientLoaded = false;
-      function handleClientLoad() {
-        if (
-          !clientLoaded &&
-          typeof mainScriptLoad !== "undefined" &&
-          typeof gapi !== "undefined"
-        ) {
-          clientLoaded = true;
-          mainScriptLoad();
-        }
-      }
-      handleClientLoad();
-    </script>
-    <script
-      async
-      defer
-      src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()"
-    ></script>
   </body>
 </html>

@@ -1,13 +1,31 @@
 var calendarDuration = 14;
 var today = new Date();
-// today = new Date(today.setDate(today.getDate() + 20));
+//today = new Date(today.setDate(today.getDate() + 20));
 
 $(document).ready(function() {
-  var i;
+  var timer = setInterval(function() {
+    $.ajax({
+      url: "http://192.168.0.121:3000",
+      type: "GET",
+      success: function(data) {
+        console.log(1);
+        var events = data.items;
+        $(".summary, .time").empty();
+        if (events.length > 0) {
+          for (i = 0; i < events.length; i++) {
+            appendToDay(events[i]);
+          }
+        }
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
+  }, 3000);
 
   //Get first Sunday which is date=0
   var firstDayInCal = getDayDate(today, -today.getDay());
-
+  var i;
   for (i = 0; i < 7; i++) {
     $(".calendar").append(
       $("<div>", { class: "dayName", text: dayToString(i) })
@@ -17,11 +35,14 @@ $(document).ready(function() {
   //Create Squares of calendar
   for (i = 0; i < calendarDuration; i++) {
     var dateNumber = new Date(getDayDate(firstDayInCal, i)).getDate();
+    var isWeekend =
+      new Date(getDayDate(firstDayInCal, i)).getDay() == 0 ||
+      new Date(getDayDate(firstDayInCal, i)).getDay() == 6;
     $(".calendar").append(
       $("<div>", { class: "day", id: dateNumber })
         .append(
           $("<div>", {
-            class: "nb",
+            class: "nb" + (isWeekend == true ? " weekend" : ""),
             text: dateNumber
           })
         )
@@ -37,8 +58,25 @@ $(document).ready(function() {
         )
     );
   }
-  $(".month").text(monthToString(today.getMonth()));
+  startTime();
 });
+
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  } // add zero in front of numbers < 10
+  return i;
+}
 
 //Put Event in corresponding square on date=>id basis
 function appendToDay(event) {
@@ -47,11 +85,11 @@ function appendToDay(event) {
     var dateNumber = new Date(event.start.date).getDate() + 1;
   } else {
     //Given Time event
-    var dateNumber = new Date(event.start.dateTime).getDate() + 1;
+    var dateNumber = new Date(event.start.dateTime).getDate();
     var sTime = new Date(event.start.dateTime);
     var hours = sTime.getHours();
     var minutes = sTime.getMinutes();
-    var startTime = hours + ":" + minutes;
+    var startTime = hours + (minutes == 0 ? "h" : ":" + minutes);
   }
 
   //var when = event.start.dateTime;
@@ -60,16 +98,13 @@ function appendToDay(event) {
   }
   $("#" + dateNumber + " .summary").append(event.summary);
 }
-
 //Get the day with an offset
 function getDayDate(firstDay, offset) {
   var date = new Date(firstDay);
   var newDate = date.getDate() + offset;
   return new Date(date.setDate(newDate));
 }
-
 function monthToString(idx) {
-  // $day = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
   var month = [
     "janvier",
     "février",
