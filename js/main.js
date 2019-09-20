@@ -5,7 +5,7 @@ var today = new Date();
 $(document).ready(function() {
   var timer = setInterval(function() {
     $.ajax({
-      url: "http://192.168.0.121:3000",
+      url: "getCalendar.js",
       type: "GET",
       success: function(data) {
         console.log(1);
