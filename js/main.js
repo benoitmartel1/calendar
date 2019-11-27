@@ -74,6 +74,7 @@ function checkTime(i) {
 
 //Put Event in corresponding square on date=>id basis
 function appendToDay(event) {
+  console.log(event);
   if (event.start.dateTime === undefined) {
     //All day event
     var dateNumber = new Date(event.start.date).getDate() + 1;
