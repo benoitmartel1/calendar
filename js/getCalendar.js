@@ -1,3 +1,5 @@
+import { exists } from "fs";
+
 // Client ID and API key from the Developer Console
 var CLIENT_ID =
   "550695631606-a758ogph4d7d4hkjolmt3c08nifp7g77.apps.googleusercontent.com";
@@ -37,6 +39,8 @@ function initClient() {
     })
     .then(
       function() {
+        listUpcomingEvents();
+        return 0;
         // Listen for sign-in state changes.
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
