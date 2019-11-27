@@ -8,7 +8,7 @@ $(document).ready(function() {
       url: "/js/getCalendar.js",
       type: "GET",
       success: function(data) {
-        console.log(data);
+        console.log(data.items);
         var events = data.items;
         $(".summary, .time").empty();
         if (events.length > 0) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
         }
       },
       error: function(data) {
-        console.log(data);
+        console.log("error" + data);
       }
     });
   }, 3000);
