@@ -3,25 +3,19 @@ var today = new Date();
 //today = new Date(today.setDate(today.getDate() + 20));
 
 $(document).ready(function() {
-  var timer = setInterval(function() {
-    $.ajax({
-      url: "/js/getCalendar.js",
-      type: "GET",
-      success: function(data) {
-        console.log(data.items);
-        var events = data.items;
-        $(".summary, .time").empty();
-        if (events.length > 0) {
-          for (i = 0; i < events.length; i++) {
-            appendToDay(events[i]);
-          }
-        }
-      },
-      error: function(data) {
-        console.log("error" + data);
-      }
-    });
-  }, 3000);
+  //   var timer = setInterval(function() {
+  //     $.ajax({
+  //       url: "/js/getCalendar.js",
+  //       type: "GET",
+  //       success: function(data) {
+  //         console.log(data.items);
+
+  //       },
+  //       error: function(data) {
+  //         console.log("error" + data);
+  //       }
+  //     });
+  //   }, 3000);
 
   //Get first Sunday which is date=0
   var firstDayInCal = getDayDate(today, -today.getDay());
