@@ -33,7 +33,6 @@
       var CLIENT_ID =
         "550695631606-a758ogph4d7d4hkjolmt3c08nifp7g77.apps.googleusercontent.com";
       //Client secret 6DziXIjaQnX1drefpsB8jVbb
-      var API_BEN = "AIzaSyDkDCA1Zs7g2LgeBxGn6fXGtfTgMToqfcw";
       var API_KEY = "AIzaSyDkDCA1Zs7g2LgeBxGn6fXGtfTgMToqfcw";
 
       // Array of API discovery doc URLs for APIs used by the quickstart
@@ -52,16 +51,14 @@
        *  On load, called to load the auth2 library and API client library.
        */
       function handleClientLoad() {
-        console.log(gapi);
-        gapi.load("client:auth2", initClient(API_BEN));
+        gapi.load("client:auth2", initClient);
       }
 
       /**
        *  Initializes the API client library and sets up sign-in state
        *  listeners.
        */
-      function initClient(API_KEY) {
-        console.log(API_KEY);
+      function initClient() {
         gapi.client
           .init({
             apiKey: API_KEY,
@@ -145,7 +142,6 @@
           })
           .then(function(response) {
             var events = response.result.items;
-            console.log(events);
             if (events.length > 0) {
               $(".summary, .time").empty();
               if (events.length > 0) {

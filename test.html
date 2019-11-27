@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="" />
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/formatGoogle.js"></script>
+
+    <script>
+      var CLIENT_ID =
+        "550695631606-a758ogph4d7d4hkjolmt3c08nifp7g77.apps.googleusercontent.com";
+      //Client secret 6DziXIjaQnX1drefpsB8jVbb
+      var API_KEY = "AIzaSyDkDCA1Zs7g2LgeBxGn6fXGtfTgMToqfcw";
+      //declare calendar urls with calendar id and api key
+      var calender1 =
+        "https://www.googleapis.com/calendar/v3/calendars/" +
+        CLIENT_ID +
+        "/events?key=" +
+        API_KEY;
+
+      //store the calendar urls in an array
+
+      var cals = [calender1];
+
+      var CAL_ID = "";
+
+      //loop through and get each calendar urls
+
+      for (j = 0; j < cals.length; j++) {
+        CAL_ID = cals[j];
+
+        formatGoogleCalendar.init({
+          calendarUrl: CAL_ID,
+          past: false,
+          upcoming: true,
+          pastTopN: 0,
+          upcomingTopN: 10,
+          itemsTagName: "li",
+          upcomingSelector: "#events-upcoming",
+          pastSelector: "#events-past",
+          upcomingHeading: "Upcoming Events",
+          pastHeading: "",
+          format: [
+            '<font style="color:#f44336; font-weight: bold; font-size: 28pt;">☞</font>&nbsp;&nbsp;<strong>',
+            "*date*",
+            "</strong>:<br>&nbsp;&nbsp;&nbsp;&nbsp; ",
+            "*summary*",
+            " &mdash; ",
+            "*description*",
+            " in ",
+            "*location*"
+          ]
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <script src="" async defer></script>
+  </body>
+</html>
